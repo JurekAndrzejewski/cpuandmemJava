@@ -3,15 +3,19 @@ import java.lang.management.ManagementFactory;
 class Cpuandmem
 {
     public static void main(String args[]) {
-        final int KB = 1000;
-        final int MB = 1000*KB;
-        final int GB = 1000*MB;
-        final int KiB = 1024;
-        final int MiB = 1024*KiB;
-        final int GiB = 1024*MiB;
-        System.out.println("Number of processors available to the Java virtual machine: ");
+        final long KB = 1000;
+        final long MB = 1000*KB;
+        final long GB = 1000*MB;
+        final long KiB = 1024;
+        final long MiB = 1024*KiB;
+        final long GiB = 1024*MiB;
+        final long memInBytes = Runtime.getRuntime().totalMemory();
+        final float memInGB = (float)memInBytes/GB;
+        final float memInGiB = (float)memInBytes/GiB;
+        System.out.println("Number of processors available to the Java: ");
         System.out.println(Runtime.getRuntime().availableProcessors()+"\n");
         System.out.println("Total amount of memory currently available: ");
-        System.out.println(((Runtime.getRuntime().totalMemory())/GB)+" GB or " + ((Runtime.getRuntime().totalMemory())/GiB)+" GiB");
+        System.out.println(memInGB + " GB");
+        System.out.println(memInGiB + " GiB");
 	}
 }
